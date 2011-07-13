@@ -2,14 +2,22 @@ require 'json'
 
 module Rack
   module PublishExceptions
-    def self.configure
-      yield self
-    end
+    class << self
+      def configure
+        yield self
+      end
 
-    def self.publisher
-    end
+      def publisher
+      end
 
-    def self.publisher=
+      def publisher=(value)
+      end
+
+      def format
+      end
+
+      def format=(value)
+      end
     end
   end
 end
