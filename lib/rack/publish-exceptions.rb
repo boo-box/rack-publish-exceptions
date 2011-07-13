@@ -1,7 +1,7 @@
 require 'json'
 
 module Rack
-  module PublishExceptions
+  class PublishExceptions
     class << self
       def configure
         yield self
