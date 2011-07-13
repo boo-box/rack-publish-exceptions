@@ -2,6 +2,10 @@ require 'json'
 
 module Rack
   module PublishExceptions
+    def self.configure
+      yield self
+    end
+
     def self.publisher
     end
 
