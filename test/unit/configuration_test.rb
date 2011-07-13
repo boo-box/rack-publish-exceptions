@@ -15,6 +15,14 @@ describe 'Configuration' do
     assert Rack::PublishExceptions.publisher.instance_of?(@adapter)
   end
 
+  it "should require the publisher to respond to publish" do
+    assert_raises ArgumentError do
+      Rack::PublishExceptions.configure do |c|
+        c.publisher = nil
+      end
+    end
+  end
+
   it "should be able to configure the format" do
     Rack::PublishExceptions.configure do |c|
       c.format = proc do |exception, env|
@@ -22,6 +30,14 @@ describe 'Configuration' do
       end
     end
 
-    assert_equals(Rack::PublishExceptions.format.call(nil,nil), "[null,null]")
+    assert_equal(Rack::PublishExceptions.format.call(nil,nil), "[null,null]")
+  end
+
+  it "should require the format result to respond to call" do
+    assert_raises ArgumentError do
+      Rack::PublishExceptions.configure do |c|
+        c.format = nil
+      end
+    end
   end
 end
