@@ -17,7 +17,7 @@ And this on your `config.ru`, right before the `run` line of your app:
 
 ```ruby
 Rack::PublishExceptions.config do |c|
-  c.publisher = MyPublisher.new
+  c.publisher = MyPublisher.new # Or any other object
   c.format = proc do |environment, exception|
     { :exception => exception.class.to_s }.to_json
   end

@@ -15,7 +15,7 @@ describe 'Exception Notification' do
     middleware = Rack::PublishExceptions.new(app)
 
     assert_raises(ArgumentError) do
-      mock(Rack::PublishExceptions.publisher).publish("{\"exception\":{\"class\":\"ArgumentError\",\"message\":\"ArgumentError\"}}") { "{}" }
+      mock(Rack::PublishExceptions.publisher).publish('{"exception":{"class":"ArgumentError","message":"ArgumentError"}}') { "{}" }
       middleware.call([])
     end
   end

@@ -17,7 +17,6 @@ module Rack
       [status, headers, body]
     end
 
-    private
     class << self
       def configure
         yield self
