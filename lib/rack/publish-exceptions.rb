@@ -12,7 +12,6 @@ module Rack
       end
 
       def publisher=(value)
-        raise ArgumentError, 'The publisher should respond to #publish' unless value.respond_to?(:publish)
         @@publisher = value
       end
 
@@ -21,7 +20,6 @@ module Rack
       end
 
       def format=(value)
-        raise ArgumentError, 'The format should respond to #call' unless value.respond_to?(:call)
         @@format = value
       end
     end
