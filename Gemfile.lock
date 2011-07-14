@@ -1,3 +1,9 @@
+GIT
+  remote: git://github.com/btakita/rr.git
+  revision: 1385208bbd3a0fdad6df2d2d06b50ecb40dfe9f3
+  specs:
+    rr (1.0.2)
+
 PATH
   remote: .
   specs:
@@ -17,3 +23,4 @@ DEPENDENCIES
   minitest
   rack-publish-exceptions!
   rake
+  rr!
