@@ -8,8 +8,8 @@ Gem::Specification.new do |s|
   s.authors     = ["boo-box"]
   s.email       = ["cainan.costa@boo-box.com"]
   s.homepage    = "http://github.com/boo-box/rack-publish-exceptions"
-  s.summary     = "A Rack Middleware to notify exceptions through Redis' pub/sub."
-  s.description = "A Rack Middleware to notify exceptions through Redis' pub/sub."
+  s.summary     = "A Rack Middleware to process exceptions."
+  s.description = "A Rack Middleware to process exceptions."
 
   s.files         = `git ls-files`.split("\n")
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
