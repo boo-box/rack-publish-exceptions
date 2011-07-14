@@ -11,22 +11,13 @@ module Rack
         begin
           @app.call(env)
         rescue Exception => error
-          create_report(error, env)
+          @@publisher.publish(@@format.call(error,env))
           raise error
         end
       [status, headers, body]
     end
 
     private
-    def create_report(exception, env)
-      @@publisher.publish({
-        :exception => {
-          :class => exception.class.to_s,
-          :message => exception.to_s,
-        }
-      }.to_json)
-    end
-
     class << self
       def configure
         yield self
