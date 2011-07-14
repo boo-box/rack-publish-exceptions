@@ -15,6 +15,10 @@ describe 'Configuration' do
     assert Rack::PublishExceptions.publisher.instance_of?(@adapter)
   end
 
+  it "should have a default format" do
+    assert_equal Rack::PublishExceptions.format.call(Exception.new('Message'),nil), '{"exception":{"class":"Exception","message":"Message"}}'
+  end
+
   it "should be able to configure the format" do
     Rack::PublishExceptions.configure do |c|
       c.format = proc do |exception, env|

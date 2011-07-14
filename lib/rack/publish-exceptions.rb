@@ -41,7 +41,12 @@ module Rack
       end
 
       def format
-        @@format
+        @@format ||= proc do |exception, env|
+          {:exception => {
+             :class => exception.class.to_s,
+             :message => exception.message
+          }}.to_json
+        end
       end
 
       def format=(value)
