@@ -1,23 +1,14 @@
-require 'sinatra'
-
-class DummyApp < Sinatra::Application
-  get '/' do
-    'ok'
-  end
-
-  post '/' do
-    'post'
-  end
-
-  put '/' do
-    'put'
-  end
-
-  delete '/' do
-    'delete'
-  end
-
-  get '/error' do
-    raise Exception, 'Application Error!'
+class DummyApp
+  def self.call(env)
+    if env['REQUEST_METHOD'] == 'GET'
+      case env['PATH_INFO']
+      when '/'
+        [200, {'Content-Type' => 'text/plain'}, 'ok']
+      when '/error'
+        raise Exception, 'Application Error!'
+      end
+    else
+      [200, {'Content-Type' => 'text/plain'}, env['REQUEST_METHOD'].downcase]
+    end
   end
 end
