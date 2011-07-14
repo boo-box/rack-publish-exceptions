@@ -43,6 +43,11 @@ module Rack
       def format=(value)
         @@format = value
       end
+
+      def reset_config!
+        @@format = nil
+        @@publisher = nil
+      end
     end
   end
 end

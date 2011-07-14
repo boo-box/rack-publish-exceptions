@@ -5,6 +5,8 @@ describe 'Configuration' do
     @adapter = Class.new do
       def publish(message); end
     end
+
+    Rack::PublishExceptions.reset_config!
   end
 
   it "should be able to configure the publisher" do
